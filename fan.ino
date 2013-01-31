@@ -1,10 +1,10 @@
 #include <EEPROM.h>
 const int led = 13;
-const int rLed = 12;
-const int yLed = 11;
+const int rLed = 12;									// to be removed
+const int yLed = 11;									// to be removed
 
-const int b1 = 4;
-const int b2 = 5;
+const int b1 = 4;											// to be removed
+const int b2 = 5;											// to be removed
 boolean space = false;
 boolean done = false;
 String command = "";
@@ -16,10 +16,10 @@ void setup() {
   parameter.reserve(200);
   command.reserve(200);
   pinMode(led,OUTPUT);
-  pinMode(b1,INPUT);
-  pinMode(b2,INPUT);
-  pinMode(yLed,OUTPUT);
-  pinMode(rLed,OUTPUT);
+	pinMode(b1,INPUT);									// to be removed
+  pinMode(b2,INPUT);									// to be removed
+  pinMode(yLed,OUTPUT);								// to be removed
+  pinMode(rLed,OUTPUT);								// to be removed
   gsm_start();
   Serial.println("Ready");
 }
@@ -120,11 +120,11 @@ void wait(int pin, int cycles, int period){
 }
 void gsm_start(){
   Serial.print("Starting GSM... ");
-  wait(led,2,500);
+  wait(led,2,500);														//change wait time to 10 sec
   Serial.println("RUNNING");
 }
 
-int push(){
+int push(){																		// to be removed. complete function!
   int mode;
   boolean b1s;
   boolean b2s;
@@ -158,7 +158,7 @@ int push(){
 
 void loop() {
   int mode = push();
-  if (mode == 1) {
+  if (mode == 1) {									// if statement to be replaced by actual program
     digitalWrite(yLed,HIGH);
     delay(250);
     digitalWrite(yLed,LOW);
@@ -176,7 +176,7 @@ void loop() {
     digitalWrite(rLed,LOW);
   }
   mode = 0;
-  digitalWrite(led,LOW);
+  digitalWrite(led,LOW);						// to be removed
   delay(100);
   digitalWrite(led,HIGH);
 }
