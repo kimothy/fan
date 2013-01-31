@@ -25,3 +25,4 @@ fan is a Arduino based project. The goal of the project is to create a device wh
 
 ## Other goals
 * Model and 3d print a casing [not done]
+
