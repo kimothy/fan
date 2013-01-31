@@ -1,8 +1,4 @@
-fan
-<<<<<<< HEAD
-===
-=======
-===
+## fan
 by Kim Timothy Engh
 kimtengh@gmail.com
 
@@ -29,4 +25,3 @@ fan is a Arduino based project. The goal of the project is to create a device wh
 ## Other goals
 * Model and 3d print a casing [not done]
 
->>>>>>> 5bd7010dc720f7cd492b583e65cf6808a4e23ec5
