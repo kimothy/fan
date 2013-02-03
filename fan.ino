@@ -1,3 +1,13 @@
+/* FAN [Fire Alarm Notifier]
+ * Written by Kim Timothy Engh,	kimtengh@gmail.com
+ * code hostet at github,		http://github.com/kimothy/fan
+ * Licensed with GPLv3,			http://www.gnu.org/licenses/gpl-3.0.html
+ * 
+ * If bugs are found, please report at github. I appreciate any feedback.
+ *
+ * This program is written for the arduino uno.
+ * It might run fine on other boards, but it's totally untested. */
+
 #include <EEPROM.h>
 const int led = 13;
 /* to be removed */
@@ -55,25 +65,13 @@ void serialEvent() {
 }
 int checkCommand() {
 	int mode;
-	if (command == "set.id") {
-		mode = 1;
-	}
-	else if (command == "set.#") {
-		mode = 2;
-	}
-	else if (command == "start") {
-		mode = 3;
-	}
-	else if (command == "stop") {
-		mode = 4;
-	}
-	else if (command == "status") {
-		mode = 5;
-	}
-	else {
-		Serial.println("Not a valid command");
-		mode = 0;
-	}
+	
+	if (command == "set.id") {mode = 1;}
+	else if (command == "set.#") {mode = 2;}
+	else if (command == "start") {mode = 3;}
+	else if (command == "stop") {mode = 4;}
+	else if (command == "status") {mode = 5;}
+	else {Serial.println("Not a valid command");mode = 0;}
 	return mode;
 }
 void executeCommand(int mode) {
@@ -99,6 +97,7 @@ void executeCommand(int mode) {
 	}
 	/* if status */
 	else if (mode == 5) {
+		Serial.println(command);
 		int stopped = EEPROM.read(1);
 		if (stopped != 0) {
 			Serial.println("RUNNING");
@@ -117,6 +116,7 @@ void executeCommand(int mode) {
 		Serial.print(readVcc(), DEC );
 		Serial.println("mV");
 		}
+	Serial.print("\n");
 	delay(100);
 	mode = 0;
 	command = "";
